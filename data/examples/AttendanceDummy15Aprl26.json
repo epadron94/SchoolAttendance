@@ -1,0 +1,9 @@
+[
+  { "id": "0001", "grade": "1A", "name": "Aiden", "attendanceDate": "2026-04-15 00:00:00" },
+  { "id": "0006", "grade": "1A", "name": "Omar", "attendanceDate": "2026-04-15 00:00:00" },
+  { "id": "0011", "grade": "1A", "name": "Ivy", "attendanceDate": "2026-04-15 00:00:00" },
+  { "id": "0012", "grade": "1A", "name": "Lucas", "attendanceDate": "2026-04-15 00:00:00" },
+  { "id": "0013", "grade": "1A", "name": "Mila", "attendanceDate": "2026-04-15 00:00:00" },
+  { "id": "0014", "grade": "1A", "name": "Jade", "attendanceDate": "2026-04-15 00:00:00" },
+  { "id": "0015", "grade": "1A", "name": "Ryan", "attendanceDate": "2026-04-15 00:00:00" }
+]

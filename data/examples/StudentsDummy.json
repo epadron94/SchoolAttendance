@@ -1,0 +1,22 @@
+[
+  { "id": "0001", "grade": "1A", "name": "Aiden" },
+  { "id": "0002", "grade": "1A", "name": "Erik" },
+  { "id": "0003", "grade": "1A", "name": "Maya" },
+  { "id": "0004", "grade": "1A", "name": "Noah" },
+  { "id": "0005", "grade": "1A", "name": "Lina" },
+  { "id": "0006", "grade": "1A", "name": "Omar" },
+  { "id": "0007", "grade": "1A", "name": "Zoe" },
+  { "id": "0008", "grade": "1A", "name": "Eli" },
+  { "id": "0009", "grade": "1A", "name": "Nina" },
+  { "id": "0010", "grade": "1A", "name": "Tyler" },
+  { "id": "0011", "grade": "1A", "name": "Ivy" },
+  { "id": "0012", "grade": "1A", "name": "Lucas" },
+  { "id": "0013", "grade": "1A", "name": "Mila" },
+  { "id": "0014", "grade": "1A", "name": "Jade" },
+  { "id": "0015", "grade": "1A", "name": "Ryan" },
+  { "id": "0016", "grade": "1A", "name": "Sara" },
+  { "id": "0017", "grade": "1A", "name": "Hugo" },
+  { "id": "0018", "grade": "1A", "name": "Lena" },
+  { "id": "0019", "grade": "1A", "name": "Noel" },
+  { "id": "0020", "grade": "1A", "name": "Rosa" }
+]

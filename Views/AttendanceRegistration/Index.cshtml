@@ -1,0 +1,73 @@
+<h1>@ViewData["Title"]</h1>
+@model School.Attendance.Models.StudentTabs
+
+@{
+    ViewData["Title"] = "Daily Attendance";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<ul class="nav nav-tabs" id="studentTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="grade1-tab" data-bs-toggle="tab" data-bs-target="#grade1" type="button" role="tab" aria-controls="grade1" aria-selected="true">
+            Grade 1A
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="grade2-tab" data-bs-toggle="tab" data-bs-target="#grade2" type="button" role="tab" aria-controls="grade2" aria-selected="false">
+            Grade 1B
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="grade3-tab" data-bs-toggle="tab" data-bs-target="#grade3" type="button" role="tab" aria-controls="grade3" aria-selected="false">
+            Grade 1C
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content mt-3" id="studentTabsContent">
+    <form asp-action="SubmitAttendance" method="post">
+        @Html.AntiForgeryToken();
+        
+        <div class="tab-pane fade show active" id="grade1" role="tabpanel" aria-labelledby="grade1-tab">
+            @Html.Partial("_StudentLst", Model.grade1A, new ViewDataDictionary(ViewData){["AttendanceCheckReadOnly"] = false})
+        </div>
+
+        <div class="tab-pane fade" id="grade2" role="tabpanel" aria-labelledby="grade2-tab">
+            @Html.Partial("_StudentLst", Model.grade1B, new ViewDataDictionary(ViewData){["AttendanceCheckReadOnly"] = false})
+        </div>
+
+        <div class="tab-pane fade" id="grade3" role="tabpanel" aria-labelledby="grade3-tab">
+            @Html.Partial("_StudentLst", Model.grade1C, new ViewDataDictionary(ViewData){["AttendanceCheckReadOnly"] = false})
+        </div>
+
+    </form>s
+    
+</div>
+
+@section Scripts {
+<script>
+document.querySelectorAll('.attendance-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', async () => {
+        const studentId = checkbox.dataset.studentid;
+        const grade = checkbox.dataset.grade;
+        const present = checkbox.checked;
+        const attendanceId = checkbox.dataset.attendanceid;
+        const formData = new FormData();
+        formData.append('studentId', studentId);
+        formData.append('grade', grade);
+        formData.append('presentToday', present ? 'true': 'false');
+        formData.append("attendanceId", attendanceId);
+        const response = await fetch('/AttendanceRegistration/SubmitAttendance', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            console.error('Failed to save attendance');
+            // optionally show a message in the UI
+        }
+    });
+});
+</script>
+}

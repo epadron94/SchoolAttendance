@@ -1,0 +1,49 @@
+@model IEnumerable<School.Attendance.Models.StudentAttendance>
+@{
+    var index = 0;
+    var checkReadOnly = ViewData["AttendanceCheckReadOnly"] as bool? ?? false;
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Student.id)</th>
+            <th>@Html.DisplayNameFor(model => model.Student.grade)</th>
+            <th>@Html.DisplayNameFor(model => model.Student.name)</th>
+            <th>Today attendance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model is not null)
+        @foreach (var item in Model)
+        {
+  
+            <tr>
+
+                <td>
+                    <input type="hidden" name="studentId" value="@item.Student.id"/>
+                    @Html.DisplayFor(modelItem => item.Student.id)
+                </td>
+                <td>
+                    <input type="hidden" name="grade" value="@item.Student.grade"/>
+                    @Html.DisplayFor(modelItem => item.Student.grade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.name)
+                </td>
+                <td>
+                    <input type="hidden" name="presentToday" value="false"/>
+                    <input type="hidden" name="attendance-id" value="@item.id"/>
+                    <input type="checkbox" name="presentToday"
+                                            class="attendance-checkbox"
+                                            data-studentid="@item.Student.id"
+                                            data-grade="@item.Student.grade"
+                                            data-attendanceid="@item.id"
+                                            @(checkReadOnly ? "disabled": "")
+                                            @(item.PresentToday ? "checked":  "")
+                    />
+                </td>
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>

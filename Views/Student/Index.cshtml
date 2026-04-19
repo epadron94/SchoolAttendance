@@ -1,0 +1,25 @@
+@model IEnumerable<School.Attendance.Models.StudentAttendance>
+
+@{
+    ViewData["Title"] = "Student Attendance";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Index" method="get" class="mb-4">
+    <div class="row g-2 align-items-end">
+        <div class="col-auto">
+            <label for="grade" class="form-label">Grade</label>
+        </div>
+        <div class="col-auto">
+            <input type="text" id="grade" name="grade" class="form-control" />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <br />
+
+</form>
+
+@Html.Partial("_StudentLst", Model, new ViewDataDictionary(ViewData){["AttendanceCheckReadOnly"] = true})
