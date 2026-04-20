@@ -9,7 +9,7 @@ builder.Services.AddControllersWithViews();
 
 
 
-var cosmosKey = builder.Configuration["CosmosKey"];
+var cosmosEndpoint = builder.Configuration["CosmosDbEndpoint"];
 var KeyVaultUri = builder.Configuration["KeyVault"];
 
 //Keyvault
@@ -23,7 +23,7 @@ builder.Configuration.AddAzureKeyVault(
 builder.Services.AddSingleton(t =>
 {
     return new CosmosClient(
-        accountEndpoint: "https://moviesapp.documents.azure.com:443/",
+        accountEndpoint: cosmosEndpoint,
         authKeyOrResourceToken: builder.Configuration["primaryMasterKey"]
     );
 
